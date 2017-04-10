@@ -2,14 +2,10 @@ bin_op = ['&', '|', '>', '<', '=']
 uni_op = ['-']
 
 def result(a):
-    print a
     b = AFF(a)
-    print b
     c = NNF(b)
-    print c
     d = CNF(c)
-    print d
-
+    return d
 
 def AFF(a):
     op = a.pop(0)
@@ -17,7 +13,7 @@ def AFF(a):
         if op == '>':
             return ['|', ['-', AFF(a[0])], AFF(a[1])]
         elif op == '<':
-            return ['|', ['-', AFF(a[1])], AFF(a[0])]
+            return ['|', AFF(a[0]), ['-', AFF(a[1])]]
         else:
             return [op, AFF(a[0]), AFF(a[1])]
     else:

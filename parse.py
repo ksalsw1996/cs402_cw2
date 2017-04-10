@@ -21,7 +21,6 @@ def bin_divide(a):
 
 
 def parse(a):
-    print(a)
     token = a.pop(0)
     if token in bin_op:
         fir, sec = bin_divide(a)
